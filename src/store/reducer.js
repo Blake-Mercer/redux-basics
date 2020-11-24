@@ -9,8 +9,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ADD_PERSON:
       const newPerson = {
         id: Math.random(), // not really unique but good enough here!
-        name: 'Blake',
-        age: Math.floor(Math.random() * 40),
+        name: action.payload.name,
+        age: action.payload.age,
       };
 
       return {
@@ -24,6 +24,8 @@ const reducer = (state = initialState, action) => {
           (person) => person.id !== action.personId
         ),
       };
+    default:
+      break;
   }
   return state;
 };
